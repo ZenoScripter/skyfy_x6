@@ -132,6 +132,7 @@ class _LyricsView extends StatefulWidget {
 class _LyricsViewState extends State<_LyricsView> {
   String? _resolvedKey;
   late Future<Lyrics?> _lyricsFuture;
+  Lyrics? _loadedLyrics;
   double _fontScale = 1.0;
 
   @override
@@ -150,6 +151,7 @@ class _LyricsViewState extends State<_LyricsView> {
     final key = '${widget.metadata.artist} - ${widget.metadata.title}';
     if (key == _resolvedKey) return;
     _resolvedKey = key;
+    _loadedLyrics = null;
     _lyricsFuture = getSongLyricsResult(
       widget.metadata.artist,
       widget.metadata.title,
@@ -193,6 +195,7 @@ class _LyricsViewState extends State<_LyricsView> {
             emptyWidget: unavailable(),
             errorBuilder: (ctx, error, stack) => unavailable(),
             builder: (context, lyrics) {
+              _loadedLyrics = lyrics;
               if (lyrics == null || lyrics.isEmpty) return unavailable();
 
               return ValueListenableBuilder<bool>(
@@ -257,7 +260,9 @@ class _LyricsViewState extends State<_LyricsView> {
                   tooltip: 'Expand lyrics',
                   visualDensity: VisualDensity.compact,
                   iconSize: 17,
-                  onPressed: () => _showExpandedLyrics(context, lyrics),
+                  onPressed: _loadedLyrics == null
+                      ? null
+                      : () => _showExpandedLyrics(context, _loadedLyrics!),
                   icon: const Icon(Icons.open_in_full_rounded),
                 ),
               ],
