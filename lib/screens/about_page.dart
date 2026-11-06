@@ -31,7 +31,7 @@ class AboutPage extends StatelessWidget {
     return Scaffold(
       backgroundColor: _skyfyBg,
       appBar: AppBar(
-        title: const Text('About SKYFY'),
+        title: const Text('Informasi & Developer'),
         backgroundColor: _skyfyBg,
         foregroundColor: Colors.white,
       ),
@@ -92,7 +92,7 @@ class AboutPage extends StatelessWidget {
               ),
             ),
             const SizedBox(height: 25),
-            _sectionTitle('ABOUT SKYFY'),
+            _sectionTitle('TENTANG SKYFY'),
             _panel(
               child: const Text(
                 'SKYFY is a music player made to discover, organize, and enjoy music '
@@ -102,15 +102,15 @@ class AboutPage extends StatelessWidget {
               ),
             ),
             const SizedBox(height: 18),
-            _sectionTitle('APP INFORMATION'),
+            _sectionTitle('INFORMASI APLIKASI'),
             _panel(
               child: const Column(
                 children: [
-                  _InfoRow(label: 'App name', value: 'SKYFY'),
+                  _InfoRow(label: 'Nama aplikasi', value: 'SKYFY'),
                   SizedBox(height: 10),
-                  _InfoRow(label: 'Version', value: '10.6.0'),
+                  _InfoRow(label: 'Versi aplikasi', value: '10.6.0'),
                   SizedBox(height: 10),
-                  _InfoRow(label: 'Build', value: '186'),
+                  _InfoRow(label: 'Nomor build', value: '186'),
                   SizedBox(height: 10),
                   _InfoRow(label: 'Platform', value: 'Android'),
                 ],
