@@ -192,15 +192,15 @@ class _LyricsViewState extends State<_LyricsView> {
             future: _lyricsFuture,
             emptyWidget: unavailable(),
             errorBuilder: (ctx, error, stack) => unavailable(),
-            builder: (context, lyrics) {
-              if (lyrics == null || lyrics.isEmpty) return unavailable();
+            builder: (context, lyricData) {
+              if (lyricData.isEmpty) return unavailable();
 
               return ValueListenableBuilder<bool>(
                 valueListenable: syncedLyricsEnabled,
                 builder: (context, syncedEnabled, _) {
-                  if (lyrics.isSynced && syncedEnabled) {
+                  if (lyricData.isSynced && syncedEnabled) {
                     return SyncedLyricsView(
-                      lyrics: lyrics,
+                      lyrics: lyricData,
                       fontScale: _fontScale,
                     );
                   }
@@ -218,7 +218,7 @@ class _LyricsViewState extends State<_LyricsView> {
                         height: 1.6,
                       ),
                       textAlign: TextAlign.center,
-                      child: Text(formatPlainLyrics(lyrics)),
+                      child: Text(formatPlainLyrics(lyricData)),
                     ),
                   );
                 },
@@ -257,7 +257,7 @@ class _LyricsViewState extends State<_LyricsView> {
                   tooltip: 'Expand lyrics',
                   visualDensity: VisualDensity.compact,
                   iconSize: 17,
-                  onPressed: () => _showExpandedLyrics(context, lyrics),
+                  onPressed: () => _showExpandedLyrics(context, lyricData),
                   icon: const Icon(Icons.open_in_full_rounded),
                 ),
               ],
