@@ -397,13 +397,13 @@ Widget _timerStepButton({
   required VoidCallback onPressed,
 }) {
   return SizedBox(
-    width: 40,
-    height: 40,
+    width: 36,
+    height: 36,
     child: IconButton(
       padding: EdgeInsets.zero,
       visualDensity: VisualDensity.compact,
-      constraints: const BoxConstraints.tightFor(width: 40, height: 40),
-      icon: Icon(icon, size: 21, color: colorScheme.onSurfaceVariant),
+      constraints: const BoxConstraints.tightFor(width: 36, height: 36),
+      icon: Icon(icon, size: 19, color: colorScheme.onSurfaceVariant),
       style: IconButton.styleFrom(
         backgroundColor: colorScheme.surface,
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
@@ -427,6 +427,8 @@ void _showSleepTimerDialog(BuildContext context) {
           final hours = totalMinutes ~/ 60;
           final minutes = totalMinutes % 60;
           return AlertDialog(
+            contentPadding: const EdgeInsets.fromLTRB(16, 14, 16, 18),
+            titlePadding: const EdgeInsets.fromLTRB(16, 20, 16, 8),
             title: Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
@@ -584,7 +586,7 @@ Widget _buildTimeSelector({
   required VoidCallback onIncrement,
 }) {
   return Container(
-    padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 9),
+    padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 8),
     decoration: BoxDecoration(
       color: colorScheme.surfaceContainerHighest,
       borderRadius: BorderRadius.circular(16),
@@ -599,7 +601,7 @@ Widget _buildTimeSelector({
             style: TextStyle(
               color: colorScheme.onSurface,
               fontWeight: FontWeight.w600,
-              fontSize: 15,
+              fontSize: 14,
             ),
           ),
         ),
@@ -609,7 +611,7 @@ Widget _buildTimeSelector({
           onPressed: onDecrement,
         ),
         SizedBox(
-          width: 38,
+          width: 32,
           child: Center(
             child: Text(
               '$value',
