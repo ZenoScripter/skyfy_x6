@@ -193,7 +193,7 @@ class _LyricsViewState extends State<_LyricsView> {
             emptyWidget: unavailable(),
             errorBuilder: (ctx, error, stack) => unavailable(),
             builder: (context, lyricData) {
-              if (lyricData.isEmpty) return unavailable();
+              if (lyricData == null || lyricData.isEmpty) return unavailable();
 
               return ValueListenableBuilder<bool>(
                 valueListenable: syncedLyricsEnabled,
